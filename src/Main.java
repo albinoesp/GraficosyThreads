@@ -2,13 +2,13 @@ import javax.swing.*;
 
 public class Main implements Runnable {
 
-    Departamentos dep1 = new Departamentos();
+    Departamentos deps = new Departamentos();
 
-    public Main(){
+    public Main() {
         super();
 
         //Creación de los Threads
-        Thread r1 = new Thread(dep1);
+        Thread r1 = new Thread(deps);
 
         //Inicialización de los Threads
         r1.start();
@@ -19,20 +19,22 @@ public class Main implements Runnable {
     }
 
     //Clase Runnable
-    public void run(){
+    public void run() {
         boolean ciclo = true; //Continuar con las acutalizaciones de la gráfica
-        while(ciclo == true){
-            try{
+        while (ciclo == true) {
+            try {
                 Thread.currentThread().sleep(5000);//Dormir el Thread principal y actualizar después de 5 segundos
-            } catch (InterruptedException e){
+
+                Thread.currentThread().start();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
     public static void main(String[] args) {
-       JFrame frame = new JFrame();
-
-
+        Departamentos app = new Departamentos();
+        Thread runapp = new Thread(app);
+        runapp.start();
     }
 }

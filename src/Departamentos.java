@@ -1,19 +1,38 @@
 import java.util.*;
-public class Departamentos extends Angulo implements Runnable  {
+import javax.swing.*;
+import java.awt.*;
 
-    public Departamentos(){
+public class Departamentos extends Angulo implements Runnable {
+
+    public Departamentos() {
         super();
     }
 
-    public void run(){
-        Scanner sc = new Scanner(System.in);
-        int ventas = 0;
-        int grado = 0;
+    public void run() {
+        //Scanner sc = new Scanner(System.in);
+        int[] ventas = {100, 100, 100, 100}; //Establecer el mínimo de ventas como default
+        int[] grado = new int[4];
+        for (int i = 0; i < 4; i++){
+            ventas[i] = (int) (Math.random()*(1500 - 1) + 100);
+        }
+        /*int i = 0; //Contador para los datos
+        int ventp; //ventas sin comprobar el rango 100-1500
+        do {
+            System.out.print("Ingrese el número de ventas para el Departamento " + (i + 1) + ": ");
+            ventp = sc.nextInt();
+            if (ventp < 100 || ventp > 1500) {
+                System.out.println("El número de ventas no conuerda con el rango. Intente otra vez");
+            } else {
+                ventas[i] = ventp;
+                i++;
+            }
+        } while (i < 4);*/
 
-        System.out.println("Departamento 1");
-        System.out.println("Número de ventas: ");
-        ventas = sc.nextInt();
+        grado = calcularGrado(ventas);
+        fillArc(grado);
 
-        calcularGrado(ventas);
+
     }
+
+
 }
