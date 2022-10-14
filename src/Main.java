@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
-
 public class Main implements Runnable {
 
     Departamentos deps = new Departamentos();
